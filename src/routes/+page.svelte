@@ -42,11 +42,16 @@
     <h2>Character</h2>
     Attributes:
     {#if character.attributes}
-        {#each character.attributes as assigned_attribute, i}
+        {#each character.attributes as att, i}
            <div>
-                {assigned_attribute.attribute_name} (assigned_attribute.details)
-                Ranks: {assigned_attribute.current_rank} Cost: {assigned_attribute.current_rank * assigned_attribute.rank_cost}
-                <button on:click={()=>{removeAttribute(assigned_attribute, i)}}>X</button>
+                {att.attribute_name} (att.details)
+                Ranks: {att.current_rank} Cost: {att.current_rank * att.rank_cost}
+                <button on:click={()=>{removeAttribute(att, i)}}>X</button>
+                <div>
+                    Change Ranks
+                    <button on:click={()=>{att.current_rank++;changeChar(character);changePoints(att.rank_cost)}}>+</button>
+                    <button on:click={()=>{att.current_rank--;changeChar(character);changePoints(-att.rank_cost)}}>-</button>
+                </div>
            </div>     
         {/each}
     
