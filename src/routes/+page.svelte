@@ -26,6 +26,14 @@
     const changePoints = (value: number) => {
         total_points -= value
     }
+
+    const changePointsUsed = (value: number, isPositive:boolean) => {
+        if (isPositive) {
+            points_used += value
+        } else {
+            points_used -= value
+        }
+    }
 </script>
 
 <h1>Anime 5e Character Builder</h1>
@@ -44,7 +52,12 @@
 
 <div>
     <h2>Character</h2>
-    <Ability total_points={total_points} points_used={points_used} character={character}/>
+    <Ability 
+        total_points={total_points} 
+        points_used={points_used} 
+        character={character}
+        changePointsUsed={changePointsUsed}
+        />
 
     {#if character.attributes}
         "I promise I'm here!"

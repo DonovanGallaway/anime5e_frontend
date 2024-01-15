@@ -2,17 +2,19 @@
     export let character:object
     export let total_points:number
     export let points_used:number
+    export let changePointsUsed:Function
     let points_remaining:number = total_points - points_used
 
     const changePoints = (ability:string, value: number, isPositive:boolean) => {
         if (isPositive && points_remaining) {
             character.abilities[ability] += value
-            points_used += value
+            changePointsUsed(1, true)
         } else {
             if(character.abilities[ability] === 0) return
             character.abilities[ability] -= value
-            points_used -= value
+            changePointsUsed(1, false)
         }
+        console.log(points_used)
     }
 </script>
 
