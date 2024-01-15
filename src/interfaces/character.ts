@@ -1,7 +1,7 @@
 import type { AttributeType } from "./attribute"
 
 interface Character{
-    attributes?: [AttributeType]
+    attributes?: [...any]
 }
 
 export type {Character}

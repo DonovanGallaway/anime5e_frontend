@@ -7,11 +7,11 @@
     let points_text: string = `${total_points}`
     let points_used: number = 0;
     let character: Character = {
+        attributes: []
     }
 
     const changeChar = (changes: Character) => {
-        character = changes
-        character.attributes = changes.attributes
+        character = {...changes}
     }
 
     const changePoints = (value: number) => {
@@ -36,8 +36,9 @@
     {#if character.attributes}
         "I promise I'm here!"
         {#each character.attributes as assigned_attribute}
-            <span>{assigned_attribute.attribute_name}</span>
+                <span>{assigned_attribute.attribute_name}</span>
         {/each}
+    
     {/if}
 </div>
 
