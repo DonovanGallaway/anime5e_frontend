@@ -7,11 +7,8 @@
 
     const changePoints = (ability:string, value: number) => {
         if (points_remaining) {
+            if(character.abilities[ability] === 0 && value < 0) return
             character.abilities[ability] += value
-            changePointsUsed(value)
-        } else {
-            if(character.abilities[ability] === 0) return
-            character.abilities[ability] -= value
             changePointsUsed(value)
         }
     }
