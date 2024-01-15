@@ -1,0 +1,50 @@
+{
+    "Novice": {
+        "level": "1st Level",
+        "maximum_ability_scores": {"first_max": 18, "second_max": 17},
+        "maximum_attribute_ranks": 4,
+        "maximum_proficiency_bonus": 3,
+        "maximum_armour_class": 20,
+        "maximum_normal_damage": 25
+    },
+    "Capable": {
+        "level": "2nd - 4th Level",
+        "maximum_ability_scores": {"first_max": 19, "second_max": 18},
+        "maximum_attribute_ranks": 5,
+        "maximum_proficiency_bonus": 4,
+        "maximum_armour_class": 22,
+        "maximum_normal_damage": 40
+    },
+    "Seasoned": {
+        "level": "5th - 10th Level",
+        "maximum_ability_scores": {"first_max": 20, "second_max": 19},
+        "maximum_attribute_ranks": 6,
+        "maximum_proficiency_bonus": 5,
+        "maximum_armour_class": 24,
+        "maximum_normal_damage": 60
+    },
+    "Veteran": {
+        "level": "11th - 16th Level",
+        "maximum_ability_scores": {"first_max": 22, "second_max": 20},
+        "maximum_attribute_ranks": 8,
+        "maximum_proficiency_bonus": 7,
+        "maximum_armour_class": 26,
+        "maximum_normal_damage": 100
+    },
+    "Mythical": {
+        "level": "17th - 20th Level",
+        "maximum_ability_scores": {"first_max": 24, "second_max": 22},
+        "maximum_attribute_ranks": 10,
+        "maximum_proficiency_bonus": 10,
+        "maximum_armour_class": 30,
+        "maximum_normal_damage": 200
+    },
+    "Epic": {
+        "level": "Above 20th Level",
+        "maximum_ability_scores": "No maximums",
+        "maximum_attribute_ranks": "No maximums",
+        "maximum_proficiency_bonus": "No maximums",
+        "maximum_armour_class": "No maximums",
+        "maximum_normal_damage": "No maximums"
+    }
+}

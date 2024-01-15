@@ -1,0 +1,25 @@
+[
+    {
+        "name": "Archfiend",
+        "attributes": [
+            {"id": 4, "details": "Strength", "ranks": 4},
+            {"id": 12, "ranks": 1},
+            {"id": 15, "details": "Strength", "ranks": 4},
+            {"id": 21, "ranks": 2},
+            {"id": 22, "details": "Darkvision (120')", "ranks": 2},
+            {"id": 34, "details": "Infernal", "ranks": 1},
+            {"id": 36, "details": "Strength Impacts", "ranks": 4},
+            {"id": 39, "details": "Demons", "ranks": 1},
+            {"id": 48, "details": "-4 dmg", "ranks": 4},
+            {"id": 66, "ranks": 1},
+            {"id": 68, "details": "4x Thrown Weapon Distance", "ranks": 2}
+        ],
+        "defects": [
+            {"id": 0, "details": "Charisma", "ranks": 1},
+            {"id": 1, "ranks":4},
+            {"id": 13, "ranks": 4},
+            {"id": 1, "details": "Big, heavy, obvious", "ranks": 2},
+            {"id": 34, "details": "Lightning", "ranks": 2}
+        ]
+    }
+]

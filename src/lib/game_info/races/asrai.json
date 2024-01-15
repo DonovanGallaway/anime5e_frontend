@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Asrai",
+        "attributes": [
+            {"id": 0, "details": "Dex", "ranks": 1},
+            {"id": 0, "details": "Int", "ranks": 1},
+            {"id": 0, "details": "Cha", "ranks": 2},
+            {"id": 23, "ranks": 1},
+            {"id": 34, "ranks": 2, "details": "Elvish, Sylvan"},
+            {"id": 52, "ranks": 1, "details": "Danger"},
+            {"id": 56, "ranks": 1, "details": "Zen Movement"}
+        ],
+        "defects": [
+        ]
+    }
+]

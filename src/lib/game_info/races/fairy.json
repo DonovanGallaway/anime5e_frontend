@@ -1,0 +1,28 @@
+[
+    {
+        "name": "Fairy",
+        "attributes": [
+            {"id":0, "ranks": 1, "details": "Wis"},
+            {"id":0, "ranks": 2, "details": "Cha"},
+            {"id": 1, "ranks": 6},
+            {"id": 7, "ranks": 6},
+            {"id": 11, "ranks": 1, "details": "Lights"},
+            {"id": 22, "ranks": 1, "details": "Direction Sense"},
+            {"id": 22, "ranks": 1, "details": "Scentless"},
+            {"id": 23, "ranks": 2},
+            {"id": 26, "ranks": 1, "details": "Smell"},
+            {"id": 34, "ranks": 1, "details": "Elvish"},
+            {"id": 34, "ranks": 1, "details": "Sylvan"},
+            {"id": 58, "ranks": 4, "details": "Major Image"},
+            {"id": 68, "ranks": 3, "details": "Small, light, unobtrusive"}
+        ],
+        "defects": [
+            {"id": 0, "ranks": 8, "details": "Str"},
+            {"id": 15, "ranks": 6, "details": "Str"},
+            {"id": 21, "ranks": 1, "details": "Strength dice rolls"},
+            {"id": 29, "ranks": 3},
+            {"id": 32, "ranks": 6},
+            {"id": 33, "ranks": 3, "details": "Thrown weapon distance /8"}
+        ]
+    }
+]

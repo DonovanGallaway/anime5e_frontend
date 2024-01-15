@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Demonaga",
+        "attributes": [
+            {"id": 15, "ranks": 2, "details": "Saving Throws vs. Magic"},
+            {"id": 15, "ranks": 4, "details": "Strength Dice Rolls"},
+            {"id": 21, "ranks": 1},
+            {"id": 27, "ranks": 3, "details": "Fire"},
+            {"id": 34, "ranks": 1, "details": "Draconic"},
+            {"id": 34, "ranks": 1, "details": "Primordial"},
+            {"id": 36, "ranks": 2, "details": "Strength Impacts"},
+            {"id": 48, "ranks": 2},
+            {"id": 68, "ranks": 1, "details": "2x thrown weapon distance"}
+        ],
+        "defects": [
+            {"id": 0, "ranks": 2, "details": "Wis"},
+            {"id": 0, "ranks": 2, "details": "Cha"},
+            {"id": 1, "ranks": 2},
+            {"id": 13, "ranks": 2},
+            {"id": 33, "ranks": 1, "details": "Big, heavy, obvious"}
+        ]
+    }
+]

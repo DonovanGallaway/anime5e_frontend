@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Blinkbeast",
+        "attributes": [
+            {"id": 2, "details": "Human Form", "ranks": 1},
+            {"id": 14, "details": "Vegetation", "ranks": 1, "enhacements": [ {"name": "Area", "ranks": 2}], "limiters": 
+                [{"name": "Conecentration", "ranks": 1}, {"name": "Unpredictable", "ranks": 1}]
+            },
+            {"id": 34, "ranks": 1, "details": "Sylvan"},
+            {"id": 62, "ranks": 2}
+        ],
+        "defects": [
+            {"id": 0, "ranks": 2, "details": "Dex"},
+            {"id": 0, "ranks": 1, "details": "Cha"}
+        ]
+    }
+]
