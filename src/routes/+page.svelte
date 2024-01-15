@@ -62,7 +62,7 @@
     {#if character.attributes}
         {#each character.attributes as att, i}
            <div>
-                {att.attribute_name} (att.details)
+                {att.attribute_name} ({att.details})
                 Ranks: {att.current_rank} Cost: {att.current_rank * att.rank_cost}
                 <button on:click={()=>{removeAttribute(att, i)}}>X</button>
                 <div>
