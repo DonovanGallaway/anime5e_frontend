@@ -2,23 +2,23 @@
     import { type Character } from '../interfaces/character'
     import { type AttributeType } from '../interfaces/attribute'
 
-    export let attribute: AttributeType
+    export let defect: AttributeType
     export let character: Character
     export let changeChar: Function
     export let changePoints: Function
 
     let details: string = ''
-    let ability: string
+    let ability: string = ''
     let detail_show: boolean = false
     let current_rank: number = 1
 
 </script>
 
-{#if attribute.id === 0 || attribute.id === 4}
+{#if defect.id === 0 || defect.id === 6}
     <div>
-        <span>{attribute.attribute_name}</span>
-        <span>Rank Cost: {attribute.rank_cost}</span>
-        <button on:click={()=>detail_show = true}>Add Attribute</button>
+        <span>{defect.attribute_name}</span>
+        <span>Rank Cost: {defect.rank_cost}</span>
+        <button on:click={()=>detail_show = true}>Add defect</button>
         <span>Ranks to Add: {current_rank}</span>
         <button on:click={()=>current_rank++}>+</button>
         <button on:click={()=>{if(current_rank >= 0){current_rank--}}}>-</button>
@@ -37,12 +37,12 @@
                 <input bind:group={ability} type='radio' name='charisma' value='charisma'/>
                 <label for='charisma'>Charisma</label>
                 <button on:click={()=>{
-                    attribute.details = ability
-                    attribute.current_rank = current_rank
-                    character.attributes?.push(attribute)
-                    character.abilities[ability] += current_rank
+                    defect.details = ability
+                    defect.current_rank = current_rank
+                    character.attributes?.push(defect)
+                    character.abilities[ability] -= current_rank
                     changeChar(character)
-                    changePoints(current_rank)
+                    changePoints(0 - current_rank)
                     detail_show = false
                 }}>Add</button>
                 <button on:click={()=>detail_show = false}>x</button>
@@ -50,27 +50,27 @@
         {/if}
     </div>
 {:else}
-    <div>
-        <span>{attribute.attribute_name}</span>
-        <span>Rank Cost: {attribute.rank_cost}</span>
-        <button on:click={()=>detail_show = true}>Add Attribute</button>
-        <span>Ranks to Add: {current_rank}</span>
-        <button on:click={()=>current_rank++}>+</button>
-        <button on:click={()=>{if(current_rank >= 0){current_rank--}}}>-</button>
-        {#if detail_show}
-            <form>
-                <label for='attribute'>Details:</label>
-                <input type='text' bind:value={details}/>
-                <button on:click={()=>{
-                    attribute.details = details
-                    attribute.current_rank = current_rank
-                    character.attributes?.push(attribute)
-                    changeChar(character)
-                    changePoints(current_rank * attribute.rank_cost)
-                    detail_show = false
-                }}>Add</button>
-                <button on:click={()=>detail_show = false}>x</button>
-            </form>
-        {/if}
-    </div>
+<div>
+    <span>{defect.attribute_name}</span>
+    <span>Rank Cost: {defect.rank_cost}</span>
+    <button on:click={()=>detail_show = true}>Add defect</button>
+    <span>Ranks to Add: {current_rank}</span>
+    <button on:click={()=>current_rank++}>+</button>
+    <button on:click={()=>{if(current_rank >= 0){current_rank--}}}>-</button>
+    {#if detail_show}
+        <form>
+            <label for='defect'>Details:</label>
+            <input type='text' bind:value={details}/>
+            <button on:click={()=>{
+                defect.details = details
+                defect.current_rank = current_rank
+                character.attributes?.push(defect)
+                changeChar(character)
+                changePoints(current_rank * defect.rank_cost)
+                detail_show = false
+            }}>Add</button>
+            <button on:click={()=>detail_show = false}>x</button>
+        </form>
+    {/if}
+</div>
 {/if}
