@@ -3,8 +3,6 @@
     export let total_points:number
     export let points_used:number
     let points_remaining:number = total_points - points_used
-    export let points_text:string
-    export let abilities:object
 
     const changePoints = (ability:string, value: number, isPositive:boolean) => {
         if (isPositive && points_remaining) {
