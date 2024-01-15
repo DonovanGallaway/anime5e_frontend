@@ -31,8 +31,12 @@
 
     const removeAttribute = (att: any, index: number) => {
         const point_change = att.rank_cost * att.current_rank
+        if(att.id === 0 || (att.id === 4 && att.rank_cost > 0) || (att.id === 6 && att.rank_cost < 0)){
+            character.abilities[att.details] -= point_change
+        }
         const change = character.attributes?.toSpliced(index, 1)
-        character = {...character, attributes: change}
+        character.attributes = change
+        changeChar(character)
         changePoints(0 - point_change)
     }
 
@@ -59,7 +63,7 @@
         points_used={points_used} 
         character={character}
         changePointsUsed={changePoints}
-        />
+    />
 
     {#if character.attributes}
         {#each character.attributes as att, i}
