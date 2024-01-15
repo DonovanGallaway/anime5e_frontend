@@ -12,7 +12,7 @@
 </script>
 
 <div>
-    <span>Attribute Name: {attribute.attribute_name}</span>
+    <span>{attribute.attribute_name}</span>
     <span>Rank Cost: {attribute.rank_cost}</span>
     <button on:click={()=>detail_show = true}>Add Attribute</button>
     {#if detail_show}
@@ -21,9 +21,9 @@
             <input type='text' bind:value={details}/>
             <button on:click={()=>{
                 attribute.details = details;
-                character = {...character, attributes: {...character.attributes, ...attribute}};
-                detail_show = false
+                character.attributes?.push(attribute)
                 changeChar(character)
+                detail_show = false
             }}>Add</button>
             <button on:click={()=>detail_show = false}>x</button>
         </form>
