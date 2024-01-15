@@ -7,7 +7,7 @@
     export let abilities:object
 
     const changePoints = (ability:string, value: number, isPositive:boolean) => {
-        if (isPositive) {
+        if (isPositive && points_remaining) {
             character.abilities[ability] += value
             total_points -= value
         } else {
