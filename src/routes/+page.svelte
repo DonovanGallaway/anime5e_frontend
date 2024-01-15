@@ -20,6 +20,11 @@
 </div>
 
 <div>
-    <h2>Attributes</h2>
+    <h2>Abilities</h2>
     
+</div>
+
+<div>
+    <h2>Attributes</h2>
+
 </div>
