@@ -9,10 +9,10 @@
     const changePoints = (ability:string, value: number, isPositive:boolean) => {
         if (isPositive && points_remaining) {
             character.abilities[ability] += value
-            total_points -= value
+            points_used += value
         } else {
             character.abilities[ability] -= value
-            total_points += value
+            points_used -= value
         }
     }
 </script>
