@@ -1,12 +1,21 @@
 <script lang='ts'>
-    import Attribute from './Attribute.svelte'
+	import Ability from './ability.svelte';
+    import Attribute from './attribute.svelte';
     import attribute_list from '../lib/game_info/attributes.json'
     import { type Character } from '../interfaces/character'
     
     let total_points: number = 80;
     let points_used: number = 0;
     let character: Character = {
-        attributes: []
+        attributes: [],
+        abilities: {
+            strength: 0,
+            dexterity: 0,
+            constitution: 0,
+            intelligence: 0,
+            wisdom: 0,
+            charisma: 0
+        }
     }
 
     const changeChar = (changes: Character) => {
@@ -31,7 +40,10 @@
 
 <div class="point-counter">
     <div>
-        <h2>Total Points: {total_points}</h2>
+        <div class='points_display'>
+            <h2>Total Points:</h2>
+            <input type="number" bind:value={total_points}/>
+        </div>
         <button on:click={()=>total_points++}>+</button>
         <button on:click={()=>total_points--}>-</button>
     </div>
@@ -40,7 +52,13 @@
 
 <div>
     <h2>Character</h2>
-    Attributes:
+    <Ability 
+        total_points={total_points} 
+        points_used={points_used} 
+        character={character}
+        changePoints={changePoints}
+        />
+
     {#if character.attributes}
         {#each character.attributes as att, i}
            <div>
@@ -67,3 +85,25 @@
     {/each}
     
 </div>
+
+<style>
+    .point-counter {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .points_display {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .point-counter button {
+        height: 50px;
+        width: 50px;
+    }
+
+    .point-counter input {
+        height: 50px;
+        width: 50px;
+    }
+</style>
