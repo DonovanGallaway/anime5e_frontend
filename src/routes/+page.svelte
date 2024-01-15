@@ -24,7 +24,10 @@
 
 <div class="point-counter">
     <div>
-        <h2>Total Points: {total_points}</h2>
+        <div class='points_display'>
+            <h2>Total Points:</h2>
+            <input type="number" bind:value={total_points}/>
+        </div>
         <button on:click={()=>total_points++}>+</button>
         <button on:click={()=>total_points--}>-</button>
     </div>
@@ -51,3 +54,25 @@
     {/each}
     
 </div>
+
+<style>
+    .point-counter {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .points_display {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .point-counter button {
+        height: 50px;
+        width: 50px;
+    }
+
+    .point-counter input {
+        height: 50px;
+        width: 50px;
+    }
+</style>
