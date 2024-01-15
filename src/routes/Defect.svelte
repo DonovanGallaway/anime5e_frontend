@@ -2,7 +2,7 @@
     import { type Character } from '../interfaces/character'
     import { type AttributeType } from '../interfaces/attribute'
 
-    export let attribute: AttributeType
+    export let defect: AttributeType
     export let character: Character
     export let changeChar: Function
     export let changePoints: Function
@@ -14,8 +14,8 @@
 </script>
 
 <div>
-    <span>{attribute.attribute_name}</span>
-    <span>Rank Cost: {attribute.rank_cost}</span>
+    <span>{defect.attribute_name}</span>
+    <span>Rank Cost: {defect.rank_cost}</span>
     <button on:click={()=>detail_show = true}>Add Attribute</button>
     <span>Ranks to Add: {current_rank}</span>
     <button on:click={()=>current_rank++}>+</button>
@@ -25,11 +25,11 @@
             <label for='attribute'>Details:</label>
             <input type='text' bind:value={details}/>
             <button on:click={()=>{
-                attribute.details = details
-                attribute.current_rank = current_rank
-                character.attributes?.push(attribute)
+                defect.details = details
+                defect.current_rank = current_rank
+                character.attributes?.push(defect)
                 changeChar(character)
-                changePoints(current_rank * attribute.rank_cost)
+                changePoints(current_rank * defect.rank_cost)
                 detail_show = false
             }}>Add</button>
             <button on:click={()=>detail_show = false}>x</button>
