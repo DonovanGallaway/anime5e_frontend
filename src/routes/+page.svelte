@@ -1,7 +1,9 @@
 <script lang='ts'>
 	import Ability from './ability.svelte';
     import Attribute from './attribute.svelte';
+    import Defect from './Defect.svelte'
     import attribute_list from '../lib/game_info/attributes.json'
+    import defect_list from '../lib/game_info/defects.json'
     import { type Character } from '../interfaces/character'
     
     let total_points: number = 80;
@@ -81,6 +83,15 @@
     <h2>Attributes</h2>
     {#each attribute_list as attribute}
         <Attribute attribute={attribute} character={character} changeChar={changeChar} changePoints={changePoints}/>
+        <br>
+    {/each}
+    
+</div>
+
+<div>
+    <h2>Defects</h2>
+    {#each defect_list as defect}
+        <Defect defect={defect} character={character} changeChar={changeChar} changePoints={changePoints}/>
         <br>
     {/each}
     
