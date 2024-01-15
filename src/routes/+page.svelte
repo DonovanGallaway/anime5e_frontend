@@ -1,6 +1,6 @@
 <script lang='ts'>
 	import Ability from './ability.svelte';
-    import Attribute from './Attribute.svelte'
+    import Attribute from './attribute.svelte';
     import attribute_list from '../lib/game_info/attributes.json'
     import { type Character } from '../interfaces/character'
     
@@ -8,7 +8,15 @@
     let points_text: string = `${total_points}`
     let points_used: number = 0;
     let character: Character = {
-        attributes: []
+        attributes: [],
+        abilities: {
+            strength: 0,
+            dexterity: 0,
+            constitution: 0,
+            intelligence: 0,
+            wisdom: 0,
+            charisma: 0
+        }
     }
 
     const changeChar = (changes: Character) => {
