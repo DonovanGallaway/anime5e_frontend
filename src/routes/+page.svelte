@@ -4,7 +4,6 @@
     import { type Character } from '../interfaces/character'
     
     let total_points: number = 80;
-    let points_text: string = `${total_points}`
     let points_used: number = 0;
     let character: Character = {
         attributes: []
@@ -14,9 +13,18 @@
         character = {...changes}
     }
 
-    const changePoints = (value: number) => {
-        total_points -= value
+    const changePoints = (change: number) => {
+        // can be positive or negative
+        points_used += change
     }
+
+    const removeAttribute = (att: any, index: number) => {
+        const point_change = att.rank_cost * att.current_rank
+        const change = character.attributes?.toSpliced(index, 1)
+        character = {...character, attributes: change}
+        changePoints(0 - point_change)
+    }
+
 </script>
 
 <h1>Anime 5e Character Builder</h1>
@@ -34,9 +42,17 @@
     <h2>Character</h2>
     Attributes:
     {#if character.attributes}
-        "I promise I'm here!"
-        {#each character.attributes as assigned_attribute}
-                <span>{assigned_attribute.attribute_name}</span>
+        {#each character.attributes as att, i}
+           <div>
+                {att.attribute_name} (att.details)
+                Ranks: {att.current_rank} Cost: {att.current_rank * att.rank_cost}
+                <button on:click={()=>{removeAttribute(att, i)}}>X</button>
+                <div>
+                    Change Ranks
+                    <button on:click={()=>{att.current_rank++;changeChar(character);changePoints(att.rank_cost)}}>+</button>
+                    <button on:click={()=>{att.current_rank--;changeChar(character);changePoints(-att.rank_cost)}}>-</button>
+                </div>
+           </div>     
         {/each}
     
     {/if}
@@ -46,7 +62,8 @@
 <div>
     <h2>Attributes</h2>
     {#each attribute_list as attribute}
-        <Attribute attribute={attribute} character={character} changeChar={changeChar}/>
+        <Attribute attribute={attribute} character={character} changeChar={changeChar} changePoints={changePoints}/>
+        <br>
     {/each}
     
 </div>
