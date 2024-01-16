@@ -1,12 +1,21 @@
 <script lang='ts'>
-	import Ability from './ability.svelte';
-    import Attribute from './attribute.svelte';
-    import attribute_list from '../lib/game_info/attributes.json'
-    import { type Character } from '../interfaces/character'
+	import Ability from '../ability.svelte';
+    import Attribute from '../attribute.svelte';
+    import attribute_list from '../../lib/game_info/attributes.json'
+    import { type Character } from '../../interfaces/character'
     
     let total_points: number = 80;
     let points_used: number = 0;
     let character: Character = {
+        name: "",
+        level: 0,
+        description: "",
+        alignment: "",
+        notes: "",
+        hitPoints:0,
+        energyPoints:0,
+        movementSpeed:0,
+        armorClass:0,
         attributes: [],
         abilities: {
             strength: 0,
@@ -15,9 +24,22 @@
             intelligence: 0,
             wisdom: 0,
             charisma: 0
+        },
+        proficiencies: {
+            weapons: [],
+            armor: [],
+            tools: [],
+            skills: [],
+            languages: []
+        },
+        equipment: {
+            weapons: [],
+            armor: [],
+            tools: [],
+            items: []
         }
     }
-
+    
     const changeChar = (changes: Character) => {
         character = {...changes}
     }

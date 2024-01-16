@@ -1,14 +1,14 @@
-import type { AttributeType } from "./attribute"
 import type { AbilityType } from "./abilities"
 
 interface Character{
     name?: string,
     level?: number,
-    race?: string,
+    race?: any,
+    class?: any,
     description?: string,
     alignment?: string,
     notes?: string,
-    hitpoints?: number,
+    hitPoints?: number,
     energyPoints?: number
     movementSpeed?: number,
     armorClass?: number,
