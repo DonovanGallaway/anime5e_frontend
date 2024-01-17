@@ -1,11 +1,12 @@
 <script lang='ts'>
-    import { type Character } from '../interfaces/character'
-    import { type AttributeType } from '../interfaces/attribute'
+    import { type Character } from '../../interfaces/character'
+    import { type AttributeType } from '../../interfaces/attribute'
 
     export let attribute: AttributeType
     export let character: Character
     export let changeChar: Function
     export let changePoints: Function
+    export let updateCharAttributes: Function
 
     let details: string = ''
     let ability: string
@@ -43,6 +44,7 @@
                     character.abilities[ability] += current_rank
                     changeChar(character)
                     changePoints(current_rank)
+                    updateCharAttributes()
                     detail_show = false
                 }}>Add</button>
                 <button on:click={()=>detail_show = false}>x</button>
@@ -67,6 +69,7 @@
                     character.attributes?.push(attribute)
                     changeChar(character)
                     changePoints(current_rank * attribute.rank_cost)
+                    updateCharAttributes()
                     detail_show = false
                 }}>Add</button>
                 <button on:click={()=>detail_show = false}>x</button>

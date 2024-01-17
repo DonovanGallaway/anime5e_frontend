@@ -13,6 +13,7 @@ interface Character{
     movementSpeed?: number,
     armorClass?: number,
     attributes?: [...any],
+    defects?: [...any]
     abilities?: AbilityType,
     proficiencies?: any,
     backpack?: []

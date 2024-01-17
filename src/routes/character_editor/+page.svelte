@@ -1,7 +1,10 @@
 <script lang='ts'>
-	import Ability from '../ability.svelte';
-    import Attribute from '../attribute.svelte';
+	import Ability from './Ability.svelte';
+	import Abilities from './Abilites.svelte';
+    import Attribute from './Attribute.svelte';
+    import Defect from './Defect.svelte';
     import attribute_list from '../../lib/game_info/attributes.json'
+    import defect_list from '../../lib/game_info/defects.json'
     import { type Character } from '../../interfaces/character'
     
     let total_points: number = 80;
@@ -39,6 +42,9 @@
             items: []
         }
     }
+
+    let charAttributes = character.attributes.filter((att) => att.rank_cost > 0)
+    let charDefects = character.attributes.filter((att) => att.rank_cost < 0)
     
     const changeChar = (changes: Character) => {
         character = {...changes}
@@ -56,59 +62,131 @@
         changePoints(0 - point_change)
     }
 
+    const removeDeffect = (deff: any, index: number) => {
+        const point_change = deff.rank_cost * deff.current_rank
+        const change = character.defects?.toSpliced(index, 1)
+        character = {...character, defects: change}
+        changePoints(0 - point_change)
+    }
+
+    const updateCharAttributes = () => {
+        charAttributes = character.attributes.filter((att) => att.rank_cost > 0)
+        charDefects = character.attributes.filter((att) => att.rank_cost < 0)
+        console.log(charAttributes)
+        console.log(charDefects)
+    }
+
 </script>
 
-<h1>Anime 5e Character Builder</h1>
+<div class='main'>
 
-<div class="point-counter">
-    <div>
-        <div class='points_display'>
-            <h2>Total Points:</h2>
-            <input type="number" bind:value={total_points}/>
+    <h1>Anime 5e Character Builder</h1>
+
+    <div class="point-counter">
+        <div>
+            <div class='points_display'>
+                <h2>Total Points:</h2>
+                <input type="number" bind:value={total_points} on:change={(evt) => total_points = evt.target.value}/>
+            </div>
+            <div class='points-buttons'>
+                <button on:click={()=>total_points++}>+</button>
+                <button on:click={()=>total_points--}>-</button>
+            </div>
         </div>
-        <button on:click={()=>total_points++}>+</button>
-        <button on:click={()=>total_points--}>-</button>
+        <div>Points Remaining: {total_points - points_used}</div>
     </div>
-    <p>Points Remaining: {total_points - points_used}</p>
-</div>
 
-<div>
-    <h2>Character</h2>
-    <Ability 
-        total_points={total_points} 
-        points_used={points_used} 
-        character={character}
-        changePointsUsed={changePoints}
-        />
+    <div>
+        <h2>Character</h2>
+        <div class='abilities'>
+            {#each Object.entries(character.abilities) as [ability, value]}
+            <Ability 
+                character={character}
+                total_points={total_points} 
+                points_used={points_used} 
+                changePoints={changePoints}
+                ability={ability}
+            />
+            {/each}
+        </div>
 
-    {#if character.attributes}
-        {#each character.attributes as att, i}
-           <div>
-                {att.attribute_name} ({att.details})
-                Ranks: {att.current_rank} Cost: {att.current_rank * att.rank_cost}
-                <button on:click={()=>{removeAttribute(att, i)}}>X</button>
-                <div>
-                    Change Ranks
-                    <button on:click={()=>{att.current_rank++;changeChar(character);changePoints(att.rank_cost)}}>+</button>
-                    <button on:click={()=>{att.current_rank--;changeChar(character);changePoints(-att.rank_cost)}}>-</button>
-                </div>
-           </div>     
-        {/each}
-    
-    {/if}
-</div>
+        <!-- <Abilities 
+            total_points={total_points} 
+            points_used={points_used} 
+            character={character}
+            changePoints={changePoints}
+            /> -->
+        <!-- list of current character attributes -->
+
+        <h2>Character Attributes</h2>
+
+        {#if charAttributes}
+            {#each charAttributes as att, i}
+            <div>
+                    {att.attribute_name} ({att.details})
+                    Ranks: {att.current_rank} Cost: {att.current_rank * att.rank_cost}
+                    <button on:click={()=>{removeAttribute(att, i)}}>X</button>
+                    <div>
+                        Change Ranks
+                        <button on:click={()=>{att.current_rank++;changeChar(character);changePoints(att.rank_cost)}}>+</button>
+                        <button on:click={()=>{att.current_rank--;changeChar(character);changePoints(-att.rank_cost)}}>-</button>
+                    </div>
+            </div>     
+            {/each}
+        
+        {/if}
+    </div>
+
+    <!-- List of current character defects -->
 
 
-<div>
-    <h2>Attributes</h2>
-    {#each attribute_list as attribute}
-        <Attribute attribute={attribute} character={character} changeChar={changeChar} changePoints={changePoints}/>
-        <br>
-    {/each}
-    
+    <h2>Character Defects</h2>
+
+    {#if charDefects}
+            {#each charDefects as deff, i}
+            <div>
+                    {deff.attribute_name} ({deff.details})
+                    Ranks: {deff.current_rank} Cost: {deff.current_rank * deff.rank_cost}
+                    <button on:click={()=>{removeDeffect(deff, i)}}>X</button>
+                    <div>
+                        Change Ranks
+                        <button on:click={()=>{deff.current_rank++;changeChar(character);changePoints(deff.rank_cost)}}>+</button>
+                        <button on:click={()=>{deff.current_rank--;changeChar(character);changePoints(-deff.rank_cost)}}>-</button>
+                    </div>
+            </div>     
+            {/each}
+        {/if}
+
+    <!-- list of possible attributes -->
+    <div class='attribute-defect'>
+        <div>
+            <h2>Attributes List</h2>
+            {#each attribute_list as attribute}
+                <Attribute attribute={attribute} character={character} changeChar={changeChar} changePoints={changePoints} updateCharAttributes={updateCharAttributes}/>
+                <br>
+            {/each}
+            
+        </div>
+
+    <!-- List of possible defects -->
+        <div>
+            <h2>Defects List</h2>
+            {#each defect_list as defect}
+                <Defect defect={defect} character={character} changeChar={changeChar} changePoints={changePoints} updateCharAttributes={updateCharAttributes}/>
+                <br>
+            {/each}
+            
+        </div>
+    </div>
 </div>
 
 <style>
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
     .point-counter {
         display: flex;
         justify-content: space-between;
@@ -127,5 +205,22 @@
     .point-counter input {
         height: 50px;
         width: 50px;
+    }
+
+    .points-buttons{
+        text-align: center;
+    }
+
+    .attribute-defect {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .abilities {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        flex-wrap: wrap;
     }
 </style>
