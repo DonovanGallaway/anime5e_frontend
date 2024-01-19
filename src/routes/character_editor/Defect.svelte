@@ -15,7 +15,7 @@
 
 </script>
 
-{#if defect.id === 0 || defect.id === 4}
+{#if defect.id === 0 || defect.id === 6}
     <div>
         <span>{defect.attribute_name}</span>
         <span>Rank Cost: {defect.rank_cost}</span>
