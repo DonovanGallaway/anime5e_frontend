@@ -61,7 +61,7 @@
         total_points={total_points} 
         points_used={points_used} 
         character={character}
-        changePointsUsed={changePoints}
+        changePoints={changePoints}
     />
     {#if character.attributes}
         {#each character.attributes as att, i}
