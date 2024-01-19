@@ -60,18 +60,27 @@
     }
 
     const removeAttribute = (att: any, index: number) => {
-        console.log(att,index)
         const point_change = att.rank_cost * att.current_rank
+        if(att.id === 0 || (att.id === 4 && att.rank_cost > 0)){
+            character.abilities[att.details] -= point_change
+        }
         const change = character.attributes?.toSpliced(index, 1)
-        character = {...character, attributes: change}
+        character.attributes = change
+        changeChar(character)
         changePoints(0 - point_change)
+        updateCharAttributes()
     }
 
-    const removeDeffect = (deff: any, index: number) => {
-        const point_change = deff.rank_cost * deff.current_rank
-        const change = character.defects?.toSpliced(index, 1)
-        character = {...character, defects: change}
+    const removeDefect = (def: any, index: number) => {
+        const point_change = att.rank_cost * att.current_rank
+        if(att.id === 0 || (att.id === 4 && att.rank_cost > 0)){
+            character.abilities[att.details] -= point_change
+        }
+        const change = character.attributes?.toSpliced(index, 1)
+        character.attributes = change
+        changeChar(character)
         changePoints(0 - point_change)
+        updateCharAttributes()
     }
 
     const updateCharAttributes = () => {
@@ -168,15 +177,15 @@
     <h2>Character Defects</h2>
 
     {#if charDefects}
-            {#each charDefects as deff, i}
+            {#each charDefects as def, i}
             <div>
-                    {deff.attribute_name} ({deff.details})
-                    Ranks: {deff.current_rank} Cost: {deff.current_rank * deff.rank_cost}
-                    <button on:click={()=>{removeDeffect(deff, i)}}>X</button>
+                    {def.attribute_name} ({def.details})
+                    Ranks: {def.current_rank} Cost: {def.current_rank * def.rank_cost}
+                    <button on:click={()=>{removeAttribute(def, i)}}>X</button>
                     <div>
                         Change Ranks
-                        <button on:click={()=>{deff.current_rank++;changeChar(character);changePoints(deff.rank_cost)}}>+</button>
-                        <button on:click={()=>{deff.current_rank--;changeChar(character);changePoints(-deff.rank_cost)}}>-</button>
+                        <button on:click={()=>{def.current_rank++;changeChar(character);changePoints(def.rank_cost)}}>+</button>
+                        <button on:click={()=>{def.current_rank--;changeChar(character);changePoints(-def.rank_cost)}}>-</button>
                     </div>
             </div>     
             {/each}
