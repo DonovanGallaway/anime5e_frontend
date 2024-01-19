@@ -21,8 +21,8 @@
     <div>Modifer</div>
     <div> {Math.floor((character.abilities[ability] - 10) / 2)}</div>
     <div class='plus-minus'>
-        <button on:click={()=>{changeAbilityPoints(ability,1)}}>+</button>
-        <button on:click={()=>{changeAbilityPoints(ability,-1)}}>-</button>
+        <button class='ability-button' on:click={()=>{changeAbilityPoints(ability,1)}}>+</button>
+        <button class='ability-button' on:click={()=>{changeAbilityPoints(ability,-1)}}>-</button>
     </div>
 </div>
 
@@ -32,5 +32,20 @@
         flex-direction: column;
         text-align: center;
         padding: 5px;
+        font-size:1.5em;
+        border: 1px solid black;
+        border-radius: 10px;
     }
+
+    .ability-header {
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+
+    .ability-button {
+        height:1.5em;
+        width: 1.5em;
+        font-size: 1em;
+    }
+
 </style>

@@ -16,7 +16,8 @@ interface Character{
     defects?: [...any]
     abilities?: AbilityType,
     proficiencies?: any,
-    backpack?: []
+    backpack?: [],
+    totalPoints?: number,
 }
 
 export type {Character}
