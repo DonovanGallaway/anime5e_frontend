@@ -41,9 +41,9 @@
                     defect.details = ability
                     defect.current_rank = current_rank
                     character.attributes?.push(defect)
-                    character.abilities[ability] += current_rank
+                    character.abilities[ability] -= current_rank
                     changeChar(character)
-                    changePoints(current_rank)
+                    changePoints(0 - current_rank)
                     updateCharAttributes()
                     detail_show = false
                 }}>Add</button>

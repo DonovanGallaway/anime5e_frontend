@@ -60,11 +60,13 @@
     }
 
     const removeAttribute = (att: any, index: number) => {
+        console.log(att)
         const point_change = att.rank_cost * att.current_rank
+        console.log(point_change)
         if(att.id === 0 || (att.id === 4 && att.rank_cost > 0)){
             character.abilities[att.details] -= point_change
         }
-        const change = character.attributes?.toSpliced(index, 1)
+        const change = character.attributes?.toSpliced(character.attributes.indexOf(att), 1)
         character.attributes = change
         changeChar(character)
         changePoints(0 - point_change)
@@ -72,11 +74,13 @@
     }
 
     const removeDefect = (def: any, index: number) => {
-        const point_change = att.rank_cost * att.current_rank
-        if(att.id === 0 || (att.id === 4 && att.rank_cost > 0)){
-            character.abilities[att.details] -= point_change
+        console.log(def)
+        const point_change = def.rank_cost * def.current_rank
+        console.log(point_change)
+        if(def.id === 0 || (def.id === 4 && def.rank_cost > 0)){
+            character.abilities[def.details] += point_change
         }
-        const change = character.attributes?.toSpliced(index, 1)
+        const change = character.attributes?.toSpliced(character.attributes.indexOf(def), 1)
         character.attributes = change
         changeChar(character)
         changePoints(0 - point_change)
@@ -181,7 +185,7 @@
             <div>
                     {def.attribute_name} ({def.details})
                     Ranks: {def.current_rank} Cost: {def.current_rank * def.rank_cost}
-                    <button on:click={()=>{removeAttribute(def, i)}}>X</button>
+                    <button on:click={()=>{removeDefect(def, i)}}>X</button>
                     <div>
                         Change Ranks
                         <button on:click={()=>{def.current_rank++;changeChar(character);changePoints(def.rank_cost)}}>+</button>
