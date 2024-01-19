@@ -73,7 +73,7 @@
 
     const removeDefect = (def: any, index: number) => {
         const point_change = def.rank_cost * def.current_rank
-        if(def.id === 0 || (def.id === 6 && def.rank_cost > 0)){
+        if(def.id === 0 || (def.id === 6 && def.rank_cost < 0)){
             character.abilities[def.details] -= point_change
         }
         const change = character.attributes?.toSpliced(character.attributes.indexOf(def), 1)
